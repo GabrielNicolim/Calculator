@@ -18,14 +18,44 @@ body {
         background: rgb(201, 201, 201);
         border-radius: 4px;
         box-shadow: 4px 7px 10px rgb(92, 92, 92);
+        padding: 10px 15px;
+
+        .top {
+            margin: 20px 10px;
+            position: relative;
+            font-weight: bold;
+
+            .hour {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+            }
+
+            .result {
+                padding: 20px 10px;
+                text-align: right;
+
+                #number {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .glass-color {
+                background: rgba(177, 163, 42, 0.397);
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                border-radius: 4px;
+                border: 1px solid rgb(177, 163, 42);
+            }
+        }
 
         .buttons {
-            display: flex;
-            width: 250px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
 
             .btn {
                 font-weight: bold;
@@ -47,6 +77,12 @@ body {
                     transition: 400ms;
                 }
             }
+
+            .btn-soma {
+                grid-row: span 2;
+                height: 87%;
+            }
         }
+        
     }
 }
