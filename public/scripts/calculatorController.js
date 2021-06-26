@@ -2,8 +2,10 @@ class Calculator {
     constructor() {
         this.lastOperator = ''
         this.lastNumber = ''
+        this.result = ''
         this.operation = []
         this.outputResult = window.document.getElementById('number')
+        this.check = false
     }
 
     clearAll() {
@@ -12,13 +14,25 @@ class Calculator {
         this.showValues()
     }
 
+    clearOperation(value) {
+        let aux = value.toString().replaceAll(',', '')
+        aux = aux.replaceAll('<span class="operator">', '')
+        aux = aux.replaceAll('</span>', '')
+        return aux
+    }
+
     inputNumber(num) {
+        if(this.check) {
+            this.clearAll()
+        }
+
         this.operation.push(num) 
         this.lastNumber = num
         this.showValues()
     }
 
     inputOperators(op) {
+        this.check = false
         if(op == '.') {
             if(this.lastOperator != '.' && this.operation.length > 0) {
 
@@ -27,24 +41,29 @@ class Calculator {
                     this.operation[this.operation.length - 2] == '/' ||
                     this.operation[this.operation.length - 2] == '-' ||
                     this.operation[this.operation.length - 2] == '+'
-                  )
-                  {
+                )   
+                {
                     this.operation.push('0')
                     this.operation.push(op)
-                  }
-                  else {
+                }
+                else {
                     this.operation.push(op)
-                  }
+                }
+
                 this.lastOperator = op
             }
+            else if(this.operation.length == 0) {
+                this.operation.push('0')
+                this.operation.push(op)
+            }
+            this.lastOperator = op
         }
         else {
             if( this.operation[this.operation.length - 2] == '*' ||
                 this.operation[this.operation.length - 2] == '%' ||
                 this.operation[this.operation.length - 2] == '/' ||
                 this.operation[this.operation.length - 2] == '-' ||
-                this.operation[this.operation.length - 2] == '+' ||
-                this.operation[this.operation.length - 2] == '.'  
+                this.operation[this.operation.length - 2] == '+'  
               ) 
             {
                 this.operation[this.operation.length - 2] = op
@@ -61,10 +80,6 @@ class Calculator {
         this.showValues()
     }
 
-    validCheck(value) {
-        
-    } 
-
     showValues() {
         if(this.operation.length == 0) {
             this.outputResult.innerHTML = '0'
@@ -75,9 +90,23 @@ class Calculator {
     }
 
     showResult() {
-        //eval  
+        if( this.operation[this.operation.length - 2] == '*' ||
+            this.operation[this.operation.length - 2] == '%' ||
+            this.operation[this.operation.length - 2] == '/' ||
+            this.operation[this.operation.length - 2] == '-' ||
+            this.operation[this.operation.length - 2] == '+' ||
+            this.operation[this.operation.length - 2] == '.'  
+        )  {
+            this.operation.push('0')
+        }
+        
+        this.result = eval(this.clearOperation(this.operation))
+        this.clearAll()
+        this.operation.push(this.result) 
 
-        console.log(this.operation)
+        this.showValues()
+
+        this.check = true
     }
 }
 
