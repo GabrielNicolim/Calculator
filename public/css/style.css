@@ -24,6 +24,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #e3d6f0;
 }
 
 body .container {

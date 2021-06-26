@@ -31,7 +31,7 @@ class Calculator {
         this.showValues()
     }
 
-    inputOperators(op) {
+    inputOperator(op) {
         this.check = false
         if(op == '.') {
             if(this.lastOperator != '.' && this.operation.length > 0) {
@@ -88,27 +88,74 @@ class Calculator {
             this.outputResult.innerHTML = this.operation.toString().replaceAll(',', '')
         }
     }
-
+    
     showResult() {
-        if( this.operation[this.operation.length - 2] == '*' ||
+        if(this.check) {
+            this.outputResult.innerHTML = '0'
+            this.clearAll()
+        }
+        else {
+            if( this.operation[this.operation.length - 2] == '*' ||
             this.operation[this.operation.length - 2] == '%' ||
             this.operation[this.operation.length - 2] == '/' ||
             this.operation[this.operation.length - 2] == '-' ||
             this.operation[this.operation.length - 2] == '+' ||
             this.operation[this.operation.length - 2] == '.'  
-        )  {
-            this.operation.push('0')
+            )  {
+                this.operation.push('0')
+            }
+            
+            this.result = eval(this.clearOperation(this.operation))
+            this.clearAll()
+            this.operation.push(this.result) 
+
+            this.showValues()
+
+            this.check = true
         }
-        
-        this.result = eval(this.clearOperation(this.operation))
-        this.clearAll()
-        this.operation.push(this.result) 
+    }
 
-        this.showValues()
+    initKeyboard(){
+        document.addEventListener("paste", e => {
+            this.pasteFromClipboard(e)
+        })
 
-        this.check = true
+        document.addEventListener("keyup", e => {
+            switch (e.key) {
+                case 'Escape':
+                    this.clearAll()
+                    break;
+                case '+':
+                case '-':
+                case '/':
+                case '*':
+                    this.inputOperator(e.key)
+                    break;
+                case '.':
+                case ',':
+                    this.inputOperator('.')
+                    break;
+                case 'Enter':
+                    this.showResult()
+                    break;
+    
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this.inputNumber(parseInt(e.key))
+                    break;
+            }
+        })
     }
 }
 
 var calc = new Calculator()
 calc.showValues()
+calc.initKeyboard()
