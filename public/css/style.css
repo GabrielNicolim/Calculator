@@ -55,6 +55,10 @@ body .container .top .result #number {
   width: 100%;
 }
 
+body .container .top .result #number .operator {
+  margin: 0 3px;
+}
+
 body .container .top .glass-color {
   background: rgba(177, 163, 42, 0.397);
   position: absolute;
@@ -102,8 +106,18 @@ body .container .buttons .btn:hover {
   transition: 400ms;
 }
 
-body .container .buttons .btn-soma {
-  grid-row: span 2;
+body .container .buttons .btn-clear {
+  width: 125px;
+  grid-column: span 2;
+}
+
+body .container .buttons .btn-zero {
+  width: 125px;
+  grid-column: span 2;
+}
+
+body .container .buttons .btn-equal {
   height: 125px;
+  grid-row: span 2;
 }
 /*# sourceMappingURL=style.css.map */

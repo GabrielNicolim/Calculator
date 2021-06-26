@@ -38,6 +38,10 @@ body {
                 #number {
                     height: 100%;
                     width: 100%;
+
+                    .operator {
+                        margin: 0 3px;
+                    }
                 }
             }
 
@@ -78,9 +82,19 @@ body {
                 }
             }
 
-            .btn-soma {
-                grid-row: span 2;
+            .btn-clear {
+                width: 125px;
+                grid-column: span 2;
+            }
+
+            .btn-zero {
+                width: 125px;
+                grid-column: span 2;
+            }
+
+            .btn-equal {
                 height: 125px;
+                grid-row: span 2;
             }
         }
         
