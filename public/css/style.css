@@ -24,11 +24,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #e3d6f0;
+  background: #e4e4e4;
 }
 
 body .container {
-  background: #c9c9c9;
+  background: #333333;
   border-radius: 4px;
   -webkit-box-shadow: 4px 7px 10px #5c5c5c;
           box-shadow: 4px 7px 10px #5c5c5c;
@@ -36,10 +36,37 @@ body .container {
   padding: 10px 15px;
 }
 
+body .container .signals {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 10px 0 10px;
+}
+
+body .container .signals .signal {
+  height: 15px;
+  width: 15px;
+  border-radius: 36em;
+  background: #858585;
+  border: 2px solid #5a5a5a;
+}
+
+body .container .signals .signal:not(:last-child) {
+  margin-right: 5px;
+}
+
+body .container .signals .active {
+  background: rgba(238, 13, 13, 0.925);
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+}
+
 body .container .top {
   margin: 20px 10px;
   position: relative;
   font-weight: bold;
+  color: #eeeeee;
 }
 
 body .container .top .hour {
@@ -55,8 +82,9 @@ body .container .top .hour {
 }
 
 body .container .top .result {
-  padding: 20px 10px;
+  padding: 0 10px;
   text-align: right;
+  height: 50px;
 }
 
 body .container .top .result #number {
@@ -90,10 +118,10 @@ body .container .buttons {
 body .container .buttons .btn {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  background: #bdbdbd;
-  -webkit-box-shadow: 2px 2px 2px #474747;
-          box-shadow: 2px 2px 2px #474747;
-  color: #303030;
+  background: #505050;
+  color: #eeeeee;
+  -webkit-box-shadow: 2px 2px 2px #949494;
+          box-shadow: 2px 2px 2px #949494;
   margin: 10px;
   width: 50px;
   height: 50px;
@@ -109,12 +137,6 @@ body .container .buttons .btn {
   cursor: pointer;
   font-size: 1.2em;
   border-radius: 4px;
-}
-
-body .container .buttons .btn:hover {
-  background: #aaa8a8;
-  -webkit-transition: 400ms;
-  transition: 400ms;
 }
 
 body .container .buttons .btn-clear {

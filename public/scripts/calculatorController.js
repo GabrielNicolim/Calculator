@@ -5,12 +5,78 @@ class Calculator {
         this.result = ''
         this.operation = []
         this.outputResult = window.document.getElementById('number')
+        this.clearLight = window.document.getElementById('clear-all')
         this.check = false
+    }
+
+    activeClear() {
+        this.check = true
+        this.clearLight.classList.add('active')  
+    }
+
+    disableClear() {
+        this.check = false
+        this.clearLight.classList.remove('active')
     }
 
     clearAll() {
         this.operation = []
+        this.showValues()
+    }
 
+    inputNumber(num) {
+        if(this.check) {
+            this.clearAll()
+            this.disableClear()
+        }
+
+        this.operation.push(num) 
+        this.lastNumber = num
+        
+        this.showValues()
+    }
+
+    opCheck() {
+        return this.operation[this.operation.length - 2] == '*' || this.operation[this.operation.length - 2] == '%' || this.operation[this.operation.length - 2] == '/' || this.operation[this.operation.length - 2] == '-' || this.operation[this.operation.length - 2] == '+'  
+    }
+
+    inputOperator(op) {
+        if(this.opCheck()) {
+            this.operation[this.operation.length - 2] = op
+            this.lastOperator = op
+        }
+        else if(this.operation.length > 0) {
+            this.operation.push('<span class="operator">')
+            this.operation.push(op)
+            this.operation.push('</span>')
+            this.lastOperator = op
+        }
+
+        this.disableClear()
+
+        this.showValues()
+    }
+
+    inputPoint(op) {
+        if(this.lastOperator != '.' && this.operation.length > 0) {
+
+            if(this.opCheck()) {
+                this.operation.push('0')
+                this.operation.push(op)
+            }
+            else {
+                this.operation.push(op)
+            }
+
+            this.lastOperator = op
+        }
+        else if(this.operation.length == 0) {
+            this.operation.push('0')
+            this.operation.push(op)
+        }
+        this.lastOperator = op
+
+        this.disableClear()
         this.showValues()
     }
 
@@ -18,91 +84,23 @@ class Calculator {
         let aux = value.toString().replaceAll(',', '')
         aux = aux.replaceAll('<span class="operator">', '')
         aux = aux.replaceAll('</span>', '')
+
         return aux
     }
 
-    inputNumber(num) {
-        if(this.check) {
-            this.clearAll()
-        }
-
-        this.operation.push(num) 
-        this.lastNumber = num
-        this.showValues()
-    }
-
-    inputOperator(op) {
-        this.check = false
-        if(op == '.') {
-            if(this.lastOperator != '.' && this.operation.length > 0) {
-
-                if( this.operation[this.operation.length - 2] == '*' ||
-                    this.operation[this.operation.length - 2] == '%' ||
-                    this.operation[this.operation.length - 2] == '/' ||
-                    this.operation[this.operation.length - 2] == '-' ||
-                    this.operation[this.operation.length - 2] == '+'
-                )   
-                {
-                    this.operation.push('0')
-                    this.operation.push(op)
-                }
-                else {
-                    this.operation.push(op)
-                }
-
-                this.lastOperator = op
-            }
-            else if(this.operation.length == 0) {
-                this.operation.push('0')
-                this.operation.push(op)
-            }
-            this.lastOperator = op
-        }
-        else {
-            if( this.operation[this.operation.length - 2] == '*' ||
-                this.operation[this.operation.length - 2] == '%' ||
-                this.operation[this.operation.length - 2] == '/' ||
-                this.operation[this.operation.length - 2] == '-' ||
-                this.operation[this.operation.length - 2] == '+'  
-              ) 
-            {
-                this.operation[this.operation.length - 2] = op
-                this.lastOperator = op
-            }
-            else if(this.operation.length > 0) {
-                this.operation.push('<span class="operator">')
-                this.operation.push(op)
-                this.operation.push('</span>')
-                this.lastOperator = op
-            }
-        }
-        
-        this.showValues()
-    }
-
     showValues() {
-        if(this.operation.length == 0) {
-            this.outputResult.innerHTML = '0'
-        }
-        else {
-            this.outputResult.innerHTML = this.operation.toString().replaceAll(',', '')
-        }
+        this.outputResult.innerHTML = this.operation.toString().replaceAll(',', '')
     }
     
     showResult() {
         if(this.check) {
-            this.outputResult.innerHTML = '0'
             this.clearAll()
+            this.showValues()
+            this.disableClear()
         }
         else {
-            if( this.operation[this.operation.length - 2] == '*' ||
-            this.operation[this.operation.length - 2] == '%' ||
-            this.operation[this.operation.length - 2] == '/' ||
-            this.operation[this.operation.length - 2] == '-' ||
-            this.operation[this.operation.length - 2] == '+' ||
-            this.operation[this.operation.length - 2] == '.'  
-            )  {
-                this.operation.push('0')
+            if(this.opCheck()) {
+                this.operation[this.operation.length - 2] = ''
             }
             
             this.result = eval(this.clearOperation(this.operation))
@@ -111,7 +109,7 @@ class Calculator {
 
             this.showValues()
 
-            this.check = true
+            this.activeClear()
         }
     }
 

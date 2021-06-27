@@ -18,20 +18,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(227, 214, 240);
+    background: rgb(228, 228, 228);
     
     .container {
-        background: rgb(201, 201, 201);
+        background: rgb(51, 51, 51);
         border-radius: 4px;
         box-shadow: 4px 7px 10px rgb(92, 92, 92);
         border: 2px solid rgba(85, 85, 85, 0.171);
         padding: 10px 15px;
 
+        .signals {
+            width: 100%;
+            display: flex;
+            padding: 5px 10px 0 10px;
+
+            .signal {
+                height: 15px;
+                width: 15px;
+                border-radius: 36em;
+                background: rgb(133, 133, 133);
+                border: 2px solid rgb(90, 90, 90);
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+            }
+
+            .active {
+                background: rgba(238, 13, 13, 0.925);
+                filter: blur(1px);
+            }
+        }
+
         .top {
             margin: 20px 10px;
             position: relative;
             font-weight: bold;
-
+            color: rgb(238, 238, 238);
+            
             .hour {
                 display: flex;
                 justify-content: space-between;
@@ -41,8 +64,9 @@ body {
             }
 
             .result {
-                padding: 20px 10px;
+                padding: 0 10px;
                 text-align: right;
+                height: 50px;
 
                 #number {
                     height: 100%;
@@ -74,9 +98,9 @@ body {
             .btn {
                 font-family: 'Roboto', sans-serif;
                 font-weight: bold;
-                background: rgb(189, 189, 189);
-                box-shadow: 2px 2px 2px rgb(71, 71, 71);
-                color: rgb(48, 48, 48);
+                background: rgb(80, 80, 80);
+                color: rgb(238, 238, 238);
+                box-shadow: 2px 2px 2px rgb(148, 148, 148);
                 margin: 10px;
                 width: 50px;
                 height: 50px;
@@ -86,11 +110,6 @@ body {
                 cursor: pointer;
                 font-size: 1.2em;
                 border-radius: 4px;
-
-                &:hover {
-                    background: rgb(170, 168, 168);
-                    transition: 400ms;
-                }
             }
 
             .btn-clear {
