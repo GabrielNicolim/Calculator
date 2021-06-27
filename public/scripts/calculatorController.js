@@ -58,7 +58,11 @@ class Calculator {
     }
 
     inputPoint(op) {
-        if(this.lastOperator != '.' && this.operation.length > 0) {
+        if(this.operation.length == 0) {
+            this.operation.push('0')
+            this.operation.push(op)
+        }
+        else if(this.lastOperator != '.') {
 
             if(this.opCheck()) {
                 this.operation.push('0')
@@ -67,12 +71,6 @@ class Calculator {
             else {
                 this.operation.push(op)
             }
-
-            this.lastOperator = op
-        }
-        else if(this.operation.length == 0) {
-            this.operation.push('0')
-            this.operation.push(op)
         }
         this.lastOperator = op
 
@@ -104,6 +102,14 @@ class Calculator {
             }
             
             this.result = eval(this.clearOperation(this.operation))
+
+            if(!(Number.isInteger(this.result))) {
+                this.lastOperator = '.'
+            }
+            else {
+                this.lastOperator = ''
+            }
+
             this.clearAll()
             this.operation.push(this.result) 
 

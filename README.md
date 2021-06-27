@@ -7,5 +7,5 @@ To start the project, open the file ```index.html``` in your browser, or [click 
 
 <br>
 
-![image](https://user-images.githubusercontent.com/69210720/123532677-9d4f3200-d6e5-11eb-8e65-76141e038fb9.png)
+![image](https://user-images.githubusercontent.com/69210720/123549774-ce108500-d740-11eb-993d-d0c9b145d6ea.png)
 
