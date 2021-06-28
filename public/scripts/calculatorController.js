@@ -1,3 +1,7 @@
+// AINDA A IMPLEMENTAR 
+// HISTÓRICO 
+// BACKSPACE 
+
 class Calculator {
     constructor() {
         this.lastOperator = ''
@@ -37,7 +41,7 @@ class Calculator {
     }
 
     opCheck() {
-        return this.operation[this.operation.length - 2] == '*' || this.operation[this.operation.length - 2] == '%' || this.operation[this.operation.length - 2] == '/' || this.operation[this.operation.length - 2] == '-' || this.operation[this.operation.length - 2] == '+'  
+        return this.operation[this.operation.length - 2] == '*' || this.operation[this.operation.length - 2] == '/' || this.operation[this.operation.length - 2] == '-' || this.operation[this.operation.length - 2] == '+'  
     }
 
     inputOperator(op) {
@@ -103,19 +107,21 @@ class Calculator {
             
             this.result = eval(this.clearOperation(this.operation))
 
-            if(!(Number.isInteger(this.result))) {
-                this.lastOperator = '.'
-            }
-            else {
-                this.lastOperator = ''
-            }
-
             this.clearAll()
-            this.operation.push(this.result) 
 
-            this.showValues()
-
-            this.activeClear()
+            if(this.result != '' && this.result != null && this.result != undefined) {
+                if(!(Number.isInteger(this.result))) {
+                    this.lastOperator = '.'
+                    this.operation.push(this.result.toFixed(2)) 
+                }
+                else {
+                    this.lastOperator = ''
+                    this.operation.push(this.result) 
+                }
+    
+                this.showValues()
+                this.activeClear()    
+            }
         }
     }
 
@@ -161,5 +167,4 @@ class Calculator {
 }
 
 var calc = new Calculator()
-calc.showValues()
 calc.initKeyboard()

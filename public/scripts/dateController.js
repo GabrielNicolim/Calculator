@@ -34,7 +34,6 @@ class DateController {
     }
 }
 
- // Inicialização 
 const date = new DateController(new Date()) 
 
  date.setDate()
