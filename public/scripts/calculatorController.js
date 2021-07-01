@@ -9,22 +9,46 @@ class Calculator {
         this.result = ''
         this.operation = []
         this.outputResult = window.document.getElementById('number')
-        this.clearLight = window.document.getElementById('clear-all')
+        this.theme = window.document.getElementById('slider')
+        this.body = window.document.getElementById('body')
         this.check = false
+    }
+
+    setTheme() {
+        if(this.theme.value == -1) {
+            this.body.classList = 'normal'
+        }
+        else if(this.theme.value == 0) {
+            this.body.classList = 'light'
+        }
+        else if(this.theme.value == 1) {
+            this.body.classList = 'dark'
+        }
     }
 
     activeClear() {
         this.check = true
-        this.clearLight.classList.add('active')  
     }
 
     disableClear() {
         this.check = false
-        this.clearLight.classList.remove('active')
     }
 
     clearAll() {
         this.operation = []
+        this.showValues()
+    }
+
+    del() {
+        if(this.opCheck()) {
+            this.operation.pop()
+            this.operation.pop()
+            this.operation.pop()
+        }
+        else {
+            this.operation.pop()
+        }
+
         this.showValues()
     }
 

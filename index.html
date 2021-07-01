@@ -5,38 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+
+    <link rel="shortcut icon" href="public/images/favicon-32x32.png" type="image/x-icon">
+
     <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
+<body id="body" class="normal">
     <div class="container">
+        <div class="top">
+            <div class="left">
+                calc
+            </div>
 
-        <div class="signals">
-            <div class="signal" id="clear-all"></div>
+            <div class="right">
+                <span>theme</span>
+
+                <div class="theme">
+                    <input id="slider" type="range" min='-1' max='1' onchange="calc.setTheme()" value="-1">
+                </div>
+            </div>
         </div>
 
-        <div class="top">
+        <!--
             <div class="hour">
                 <span id="time"></span>
 
                 <span id="date"></span>
             </div>
+        -->
 
-            <div class="result">
-                <span id="number"></span>
-            </div>
-            
-            <div class="glass-color"></div>
+        <div class="result">
+            <span id="number"></span>
         </div>
 
         <div class="buttons">
-                <div class="btn btn-clear" onclick="calc.clearAll()">C</div>
-                <div class="btn" onclick="calc.inputOperator('/')">/</div>
-                <div class="btn" onclick="calc.inputOperator('*')">X</div>
-
                 <div class="btn" onclick="calc.inputNumber(7)">7</div>
                 <div class="btn" onclick="calc.inputNumber(8)">8</div>
                 <div class="btn" onclick="calc.inputNumber(9)">9</div>
-                <div class="btn" onclick="calc.inputOperator('-')">-</div>
+                <div class="btn btn-del" onclick="calc.del()">DEL</div>
 
                 <div class="btn" onclick="calc.inputNumber(4)">4</div>
                 <div class="btn" onclick="calc.inputNumber(5)">5</div>
@@ -46,14 +52,22 @@
                 <div class="btn" onclick="calc.inputNumber(1)">1</div>
                 <div class="btn" onclick="calc.inputNumber(2)">2</div>
                 <div class="btn" onclick="calc.inputNumber(3)">3</div>
-                <div class="btn btn-equal" onclick="calc.showResult()">=</div>
+                <div class="btn" onclick="calc.inputOperator('-')">-</div>
 
-                <div class="btn btn-zero" onclick="calc.inputNumber(0)">0</div>
                 <div class="btn" onclick="calc.inputPoint('.')">.</div>
+                <div class="btn btn-zero" onclick="calc.inputNumber(0)">0</div>
+                <div class="btn" onclick="calc.inputOperator('/')">/</div>
+                <div class="btn" onclick="calc.inputOperator('*')">X</div>
+
+                <div class="btn btn-reset" onclick="calc.clearAll()">RESET</div>
+                <div class="btn btn-equal" onclick="calc.showResult()">=</div>
         </div>
     </div>
 
     <script src="public/scripts/calculatorController.js"></script>
+    
+    <!--
     <script src="public/scripts/dateController.js"></script>
+    -->
 </body>
 </html>
