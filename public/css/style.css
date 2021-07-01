@@ -58,6 +58,49 @@ html {
           box-shadow: 2px 2px 2px #93261a;
 }
 
+.light {
+  background: #e6e6e6;
+  color: #35352c;
+}
+
+.light .top #slider {
+  background: #d1cccc;
+}
+
+.light .top #slider::-webkit-slider-thumb {
+  background: #d03f2f;
+}
+
+.light .result {
+  background: #ededed;
+}
+
+.light .buttons {
+  background: #d1cccc;
+}
+
+.light .buttons .btn {
+  background: #e5e4e1;
+  color: #444b5a;
+  -webkit-box-shadow: 2px 2px 2px #a69d91;
+          box-shadow: 2px 2px 2px #a69d91;
+}
+
+.light .buttons .btn-del,
+.light .buttons .btn-reset {
+  background: #377f86;
+  -webkit-box-shadow: 2px 2px 2px #1b5f65;
+          box-shadow: 2px 2px 2px #1b5f65;
+  color: white;
+}
+
+.light .buttons .btn-equal {
+  background: #ca5502;
+  -webkit-box-shadow: 2px 2px 2px #893901;
+          box-shadow: 2px 2px 2px #893901;
+  color: white;
+}
+
 body {
   width: 100vw;
   min-height: 100vh;

@@ -61,7 +61,44 @@ html {
 // Theme 2
 
 .light {
+    background: $light-gray;
+    color: $very-dark-grayish-yellow;
+    .top {
+        #slider {
+            background: $grayish-red-toggle;
 
+            &::-webkit-slider-thumb {
+                background: $red;
+            }
+        }
+    }
+
+    .result {
+        background: $very-light-gray-screen;
+    }
+
+    .buttons {
+        background: $grayish-red-toggle;
+
+        .btn {
+            background: $light-grayish-yellow-background;
+            color: $very-dark-grayish-blue;
+            box-shadow: 2px 2px 2px $dark-grayis-orange-shadow;
+        }
+
+        .btn-del, 
+        .btn-reset {
+            background: $dark-moderate-cyan-background;
+            box-shadow: 2px 2px 2px $very-dark-cyan-shadow;
+            color: $white;
+        }
+
+        .btn-equal {
+            background: $orange;
+            box-shadow: 2px 2px 2px $dark-orange-shadow;
+            color: $white;
+        }
+    }
 }
 
 // Theme 3 
