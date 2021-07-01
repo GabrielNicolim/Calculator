@@ -7,5 +7,6 @@ To start the project, open the file ```index.html``` in your browser, or [click 
 
 <br>
 
-![image](https://user-images.githubusercontent.com/69210720/123549774-ce108500-d740-11eb-993d-d0c9b145d6ea.png)
+## Possible Themes
 
+![image](https://www.frontendmentor.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdz209s6jk%2Fimage%2Fupload%2Fv1620928771%2FChallenges%2Fvzivsem9sneurloo7qlz.jpg&w=828&q=75)
