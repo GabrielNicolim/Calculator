@@ -40,7 +40,16 @@ class Calculator {
     }
 
     del() {
-        
+        if(this.opCheck()) {
+            this.operation.pop()
+            this.operation.pop()
+            this.operation.pop()
+        }
+        else {
+            this.operation.pop()
+        }
+
+        this.showValues()
     }
 
     inputNumber(num) {
