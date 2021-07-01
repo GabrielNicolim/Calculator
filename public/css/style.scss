@@ -16,22 +16,18 @@ html {
 
 .normal {
     background: $very-dark-desaturated-blue;
+    color: $white;
 
-    .top {
-        color: $white;
+    #slider {
+        background: $very-dark-desaturated-blue-toggle;
 
-        #slider {
-            background: $very-dark-desaturated-blue-toggle;
-
-            &::-webkit-slider-thumb {
-                background: $red;
-            }
+        &::-webkit-slider-thumb {
+            background: $red;
         }
     }
 
     .result {
         background: $very-dark-desaturated-blue-screen;
-        color: $white;
     }
 
     .buttons {
@@ -46,14 +42,14 @@ html {
         .btn-del, 
         .btn-reset {
             background: $desaturated-dark-blue-background;
-            color: $white;
             box-shadow: 2px 2px 2px $desaturated-dark-blue-shadow;
+            color: $white;
         }
 
         .btn-equal {
             background: $red;
-            color: $white;
             box-shadow: 2px 2px 2px $dark-red-shadow;
+            color: $white;
         }
     }
 }
@@ -63,12 +59,13 @@ html {
 .light {
     background: $light-gray;
     color: $very-dark-grayish-yellow;
+
     .top {
         #slider {
             background: $grayish-red-toggle;
 
             &::-webkit-slider-thumb {
-                background: $red;
+                background: $orange;
             }
         }
     }
@@ -104,7 +101,45 @@ html {
 // Theme 3 
 
 .dark {
+    background: $very-dark-violet-background;
+    color: $light-yellow;
 
+    .top {
+        #slider {
+            background: $very-dark-violet-toggle-screen;
+
+            &::-webkit-slider-thumb {
+                background: $pure-cyan-toggle;
+            }
+        }
+    }
+
+    .result {
+        background: $very-dark-violet-toggle-screen;
+    }
+
+    .buttons {
+        background: $very-dark-violet-toggle-screen;
+
+        .btn {
+            background: $very-dark-violet-background;
+            box-shadow: 2px 2px 2px $dark-magenta-shadow;
+        }
+
+        .btn-del, 
+        .btn-reset {
+            background: $dark-violet-background;
+            box-shadow: 2px 2px 2px $vivid-magenta-shadow;
+            color: $very-dark-grayish-blue;
+            color: $white;
+        }
+
+        .btn-equal {
+            background: $pure-cyan-toggle;
+            box-shadow: 2px 2px 2px $soft-cyan-shadow;
+            color: $very-dark-blue;
+        }
+    }
 }
 
 body {

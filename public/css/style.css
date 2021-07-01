@@ -13,23 +13,19 @@ html {
 
 .normal {
   background: #3a4764;
-}
-
-.normal .top {
   color: white;
 }
 
-.normal .top #slider {
+.normal #slider {
   background: #232c43;
 }
 
-.normal .top #slider::-webkit-slider-thumb {
+.normal #slider::-webkit-slider-thumb {
   background: #d03f2f;
 }
 
 .normal .result {
   background: #182034;
-  color: white;
 }
 
 .normal .buttons {
@@ -46,16 +42,16 @@ html {
 .normal .buttons .btn-del,
 .normal .buttons .btn-reset {
   background: #637097;
-  color: white;
   -webkit-box-shadow: 2px 2px 2px #404e72;
           box-shadow: 2px 2px 2px #404e72;
+  color: white;
 }
 
 .normal .buttons .btn-equal {
   background: #d03f2f;
-  color: white;
   -webkit-box-shadow: 2px 2px 2px #93261a;
           box-shadow: 2px 2px 2px #93261a;
+  color: white;
 }
 
 .light {
@@ -68,7 +64,7 @@ html {
 }
 
 .light .top #slider::-webkit-slider-thumb {
-  background: #d03f2f;
+  background: #ca5502;
 }
 
 .light .result {
@@ -99,6 +95,49 @@ html {
   -webkit-box-shadow: 2px 2px 2px #893901;
           box-shadow: 2px 2px 2px #893901;
   color: white;
+}
+
+.dark {
+  background: #341c4f;
+  color: #ffe53d;
+}
+
+.dark .top #slider {
+  background: #1d0934;
+}
+
+.dark .top #slider::-webkit-slider-thumb {
+  background: #00e0d1;
+}
+
+.dark .result {
+  background: #1d0934;
+}
+
+.dark .buttons {
+  background: #1d0934;
+}
+
+.dark .buttons .btn {
+  background: #341c4f;
+  -webkit-box-shadow: 2px 2px 2px #871c9c;
+          box-shadow: 2px 2px 2px #871c9c;
+}
+
+.dark .buttons .btn-del,
+.dark .buttons .btn-reset {
+  background: #58077d;
+  -webkit-box-shadow: 2px 2px 2px #bc15f4;
+          box-shadow: 2px 2px 2px #bc15f4;
+  color: #444b5a;
+  color: white;
+}
+
+.dark .buttons .btn-equal {
+  background: #00e0d1;
+  -webkit-box-shadow: 2px 2px 2px #6cf9f2;
+          box-shadow: 2px 2px 2px #6cf9f2;
+  color: #1b2428;
 }
 
 body {
