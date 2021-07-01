@@ -221,14 +221,18 @@ body .result #number {
   width: 100%;
 }
 
+body .result #number .operator {
+  margin: 0 5px;
+}
+
 body .buttons {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2vw;
+  grid-gap: 20px;
   border-radius: 8px;
-  padding: 2vw;
+  padding: 20px;
 }
 
 body .buttons .btn {
@@ -241,7 +245,7 @@ body .buttons .btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1vw 1.5vw;
+  padding: 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 32px;
@@ -257,5 +261,38 @@ body .buttons .btn-reset,
 body .buttons .btn-equal,
 body .buttons .btn-del {
   font-size: 18px;
+}
+
+@media screen and (max-width: 775px) {
+  body {
+    padding: 1em;
+  }
+  body .top .left {
+    font-size: 26px;
+  }
+  body .top .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  body .top .right span {
+    font-size: 14px;
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+  body .result {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+  body .buttons {
+    grid-gap: 15px;
+  }
+  body .buttons .btn {
+    padding: 15px;
+    font-size: 18px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

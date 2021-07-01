@@ -198,21 +198,25 @@ body {
         #number {
             text-align: right;
             width: 100%;
+
+            .operator {
+                margin: 0 5px;
+            }
         }
     }
 
     .buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 2vw;
+        grid-gap: 20px;
         border-radius: 8px;
-        padding: 2vw;
+        padding: 20px;
 
         .btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1vw 1.5vw;
+            padding: 20px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 32px;
@@ -229,5 +233,43 @@ body {
         .btn-del {
             font-size: 18px;
         }
+    }
+}
+
+@media screen and (max-width: 775px) {
+
+    body {
+        padding: 1em;
+
+        .top {
+            .left {
+                font-size: 26px;
+            }
+    
+            .right{
+                display: flex;
+                align-items: center;
+    
+                span {
+                    font-size: 14px;
+                    margin-right: 20px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    
+        .result {
+            font-size: 16px;
+            padding: 0 20px;
+        }
+    
+        .buttons {
+            grid-gap: 15px;
+    
+            .btn {
+                padding: 15px;
+                font-size: 18px;
+            }
+        }  
     }
 }
