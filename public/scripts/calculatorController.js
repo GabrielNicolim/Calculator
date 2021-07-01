@@ -44,6 +44,21 @@ class Calculator {
             this.operation.pop()
             this.operation.pop()
             this.operation.pop()
+
+            for(let i = this.operation.length - 1; i >= 0; i--) {
+                if(this.operation[i] == '*' ||
+                this.operation[i] == '/' ||
+                this.operation[i] == '-' || 
+                this.operation[i] == '+' ||
+                this.operation[i] == '.'  ) {
+                    this.lastOperator = this.operation[i]
+                    break
+                }
+            }
+        }
+        else if(this.operation[this.operation.length - 1] == '.' ){
+            this.operation.pop()
+            this.lastOperator = ''
         }
         else {
             this.operation.pop()
@@ -136,11 +151,18 @@ class Calculator {
             if(this.result != '' && this.result != null && this.result != undefined) {
                 if(!(Number.isInteger(this.result))) {
                     this.lastOperator = '.'
-                    this.operation.push(this.result.toFixed(2)) 
+                    this.result = this.result.toFixed(2)
+
+                    for(let i = 0; i < this.result.toString().length; i++) {
+                        this.operation.push(this.result.toString()[i])
+                    }
                 }
                 else {
                     this.lastOperator = ''
-                    this.operation.push(this.result) 
+
+                    for(let i = 0; i < this.result.toString().length; i++) {
+                        this.operation.push(this.result.toString()[i])
+                    }
                 }
     
                 this.showValues()
