@@ -12,6 +12,56 @@ html {
     overflow-x: hidden;
 }
 
+@keyframes broken {
+    0% {
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+
+    5% {
+        transform: rotate(5deg);
+    }
+
+    15% {
+        transform: rotate(-5deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(45deg);
+    }
+
+    70% {
+        transform: translate3d(0,2000px,0);
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0,-2000px,0);
+    }
+}
+
+.broken {
+    animation: broken 2s;
+    transform: translate3d(0,-2000px,0);
+    opacity: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
 // Theme 1 
 
 .normal {
@@ -51,6 +101,12 @@ html {
             box-shadow: 2px 2px 2px $dark-red-shadow;
             color: $white;
         }
+    }
+
+    .reset {
+        background: $desaturated-dark-blue-background;
+        box-shadow: 2px 2px 2px $desaturated-dark-blue-shadow;
+        color: $white;
     }
 }
 
@@ -96,6 +152,12 @@ html {
             color: $white;
         }
     }
+
+    .reset {
+        background: $dark-moderate-cyan-background;
+        box-shadow: 2px 2px 2px $very-dark-cyan-shadow;
+        color: $white;
+    }
 }
 
 // Theme 3 
@@ -130,7 +192,6 @@ html {
         .btn-reset {
             background: $dark-violet-background;
             box-shadow: 2px 2px 2px $vivid-magenta-shadow;
-            color: $very-dark-grayish-blue;
             color: $white;
         }
 
@@ -139,6 +200,12 @@ html {
             box-shadow: 2px 2px 2px $soft-cyan-shadow;
             color: $very-dark-blue;
         }
+    }
+
+    .reset {
+        background: $dark-violet-background;
+        box-shadow: 2px 2px 2px $vivid-magenta-shadow;
+        color: $white;
     }
 }
 
@@ -233,6 +300,15 @@ body {
         .btn-del {
             font-size: 18px;
         }
+    }
+
+    .reset {
+        padding: 2em;
+        border-radius: 8px;
+        cursor: pointer;
+        text-transform: uppercase;
+        position: absolute;
+        transition: 2s;
     }
 }
 

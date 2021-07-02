@@ -203,7 +203,11 @@ class Calculator {
             if(this.result == Infinity) {
                 this.lastOperator = ''
                 
-                // se divisão por 0 => Quebrar calc 
+                window.document.getElementById('container').classList.add('broken')
+
+                const time = setTimeout(() => {
+                    window.document.getElementById('reset').classList.remove('hidden')
+                }, 2000)
             }
             else if(!(Number.isInteger(this.result))) {
                 this.lastOperator = '.'
@@ -268,6 +272,10 @@ class Calculator {
                     break;
             }
         })
+    }
+
+    reset() {
+        window.location.reload()
     }
 }
 
