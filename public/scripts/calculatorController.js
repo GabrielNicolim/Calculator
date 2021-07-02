@@ -191,7 +191,6 @@ class Calculator {
     }
     
     showResult() {
-        //&& !(this.operation[this.operation.length - 1] == '0' || this.isNumber(this.operation[this.operation.length - 1]))
         if(this.opCheck()) {
             console.log(this.operation)
             this.operation[this.operation.length - 2] = ''
@@ -202,9 +201,7 @@ class Calculator {
         this.clearAll()
 
         if(this.result != '' && this.result != null && this.result != undefined) {
-            if(this.result == Infinity) {
-                this.lastOperator = ''
-                
+            if(this.result == Infinity || Number.isNaN(this.result)) {
                 window.document.getElementById('container').classList.add('broken')
 
                 const time = setTimeout(() => {
