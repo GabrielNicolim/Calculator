@@ -72,10 +72,21 @@ class Calculator {
             this.clearAll()
             this.disableClear()
         }
-
-        this.operation.push(num) 
-        this.lastNumber = num
         
+        if(num == '0' && (this.opCheck() ||
+         this.operation[this.operation.length - 1] == null ||
+          this.operation[this.operation.length - 1] == '' ||
+           this.operation[this.operation.length - 1] == undefined)) {
+               
+            this.operation.push(num) 
+            this.inputPoint('.')
+            this.lastNumber = num
+        }
+        else {
+            this.operation.push(num) 
+            this.lastNumber = num
+        }
+
         this.showValues()
     }
 
