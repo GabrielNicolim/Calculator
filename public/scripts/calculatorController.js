@@ -41,20 +41,31 @@ class Calculator {
             this.operation.pop()
             this.operation.pop()
             this.operation.pop()
+            
+            this.zero = false 
+            
+            for(let i = this.operation.length - 1; i >= 0; i--) {
+                if( this.operation[i] == '*' ||
+                    this.operation[i] == '/' ||
+                    this.operation[i] == '-' || 
+                    this.operation[i] == '+' ||
+                    this.operation[i] == '.'  ) {
+                    this.lastOperator = this.operation[i]
+                    break
+                }
+                else {
+                    this.lastOperator == ''
+                }
+            } 
+        }
+        else if(this.operation[this.operation.length - 1] == '.' ){
+            this.operation.pop()
+            this.lastOperator = ''
+        }
+        else {
+            this.operation.pop()
 
             for(let i = this.operation.length - 1; i >= 0; i--) {
-                if(this.operation[i] == '0' || this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
-                this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
-                this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
-                    if(this.operation[i] == '0') {
-                        this.zero = true
-                    }
-                    else {
-                        this.zero = false
-                    }
-                    this.lastNumber == this.operation[i]
-                }
-
                 if(this.operation[i] == '*' ||
                 this.operation[i] == '/' ||
                 this.operation[i] == '-' || 
@@ -63,14 +74,18 @@ class Calculator {
                     this.lastOperator = this.operation[i]
                     break
                 }
-            }
-        }
-        else if(this.operation[this.operation.length - 1] == '.' ){
-            this.operation.pop()
-            this.lastOperator = ''
-        }
-        else {
-            this.operation.pop()
+
+                if( this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
+                    this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
+                    this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
+                    this.zero = false
+                }
+                else {
+                    this.zero = true
+                }
+
+                this.lastNumber == this.operation[i]
+            }  
         }
 
         this.showValues()
@@ -98,7 +113,7 @@ class Calculator {
                     if(!this.opCheck()) {
                         if( this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
                             this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
-                            this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
+                            this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9' || this.operation[i] == '.') {
                             this.zero = false
                             break
                         }
