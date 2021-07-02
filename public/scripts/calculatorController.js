@@ -1,7 +1,3 @@
-// AINDA A IMPLEMENTAR 
-// HISTÓRICO 
-// BACKSPACE 
-
 class Calculator {
     constructor() {
         this.lastOperator = ''
@@ -12,6 +8,7 @@ class Calculator {
         this.theme = window.document.getElementById('slider')
         this.body = window.document.getElementById('body')
         this.check = false
+        this.zero = false 
     }
 
     setTheme() {
@@ -46,6 +43,18 @@ class Calculator {
             this.operation.pop()
 
             for(let i = this.operation.length - 1; i >= 0; i--) {
+                if(this.operation[i] == '0' || this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
+                this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
+                this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
+                    if(this.operation[i] == '0') {
+                        this.zero = true
+                    }
+                    else {
+                        this.zero = false
+                    }
+                    this.lastNumber == this.operation[i]
+                }
+
                 if(this.operation[i] == '*' ||
                 this.operation[i] == '/' ||
                 this.operation[i] == '-' || 
@@ -72,20 +81,40 @@ class Calculator {
             this.clearAll()
             this.disableClear()
         }
-        
-        if(num == '0' && (this.opCheck() ||
-         this.operation[this.operation.length - 1] == null ||
-          this.operation[this.operation.length - 1] == '' ||
-           this.operation[this.operation.length - 1] == undefined)) {
-               
-            this.operation.push(num) 
-            this.inputPoint('.')
-            this.lastNumber = num
+
+        if(this.zero) {
+            this.operation.pop()
+            this.zero = false
         }
-        else {
-            this.operation.push(num) 
-            this.lastNumber = num
+
+        if(num == '0') {  
+            if( this.opCheck() ||
+                this.operation[this.operation.length - 1] == undefined ||
+                this.operation[this.operation.length - 1] == null) {
+                this.zero = true
+            }
+            else {
+                for(let i = this.operation.length - 1; i >= 0; i--) {
+                    if(!this.opCheck()) {
+                        if( this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
+                            this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
+                            this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
+                            this.zero = false
+                            break
+                        }
+                        else {
+                            this.zero = true
+                        }
+                    }  
+                    else {
+                        break
+                    }
+                }
+            }
         }
+
+        this.operation.push(num) 
+        this.lastNumber = num
 
         this.showValues()
     }
@@ -106,6 +135,7 @@ class Calculator {
             this.lastOperator = op
         }
 
+        this.zero = false
         this.disableClear()
 
         this.showValues()
@@ -127,6 +157,7 @@ class Calculator {
             }
         }
         this.lastOperator = op
+        this.zero = false
 
         this.disableClear()
         this.showValues()
@@ -145,40 +176,33 @@ class Calculator {
     }
     
     showResult() {
-        if(this.check) {
-            this.clearAll()
-            this.showValues()
-            this.disableClear()
+        if(this.opCheck()) {
+            this.operation[this.operation.length - 2] = ''
         }
-        else {
-            if(this.opCheck()) {
-                this.operation[this.operation.length - 2] = ''
-            }
-            
-            this.result = eval(this.clearOperation(this.operation))
+        
+        this.result = eval(this.clearOperation(this.operation))
 
-            this.clearAll()
+        this.clearAll()
 
-            if(this.result != '' && this.result != null && this.result != undefined) {
-                if(!(Number.isInteger(this.result))) {
-                    this.lastOperator = '.'
-                    this.result = this.result.toFixed(2)
+        if(this.result != '' && this.result != null && this.result != undefined) {
+            if(!(Number.isInteger(this.result))) {
+                this.lastOperator = '.'
+                this.result = this.result.toFixed(2)
 
-                    for(let i = 0; i < this.result.toString().length; i++) {
-                        this.operation.push(this.result.toString()[i])
-                    }
+                for(let i = 0; i < this.result.toString().length; i++) {
+                    this.operation.push(this.result.toString()[i])
                 }
-                else {
-                    this.lastOperator = ''
-
-                    for(let i = 0; i < this.result.toString().length; i++) {
-                        this.operation.push(this.result.toString()[i])
-                    }
-                }
-    
-                this.showValues()
-                this.activeClear()    
             }
+            else {
+                this.lastOperator = ''
+
+                for(let i = 0; i < this.result.toString().length; i++) {
+                    this.operation.push(this.result.toString()[i])
+                }
+            }
+
+            this.showValues()
+            this.activeClear()    
         }
     }
 
