@@ -200,7 +200,12 @@ class Calculator {
         this.clearAll()
 
         if(this.result != '' && this.result != null && this.result != undefined) {
-            if(!(Number.isInteger(this.result))) {
+            if(this.result == Infinity) {
+                this.lastOperator = ''
+                
+                // se divisão por 0 => Quebrar calc 
+            }
+            else if(!(Number.isInteger(this.result))) {
                 this.lastOperator = '.'
                 this.result = this.result.toFixed(2)
 
@@ -256,6 +261,10 @@ class Calculator {
                 case '8':
                 case '9':
                     this.inputNumber(parseInt(e.key))
+                    break;
+
+                case 'Backspace':
+                    this.del()
                     break;
             }
         })
