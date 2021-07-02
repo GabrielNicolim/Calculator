@@ -31,6 +31,10 @@ class Calculator {
         this.check = false
     }
 
+    isNumber(val) {
+        return val == '1' || val == '2' || val == '3' || val == '4' || val == '5' || val == '6' || val == '7' || val == '8' || val == '9'
+    }
+    
     clearAll() {
         this.operation = []
         this.showValues()
@@ -66,21 +70,19 @@ class Calculator {
             this.operation.pop()
 
             for(let i = this.operation.length - 1; i >= 0; i--) {
-                if(this.operation[i] == '*' ||
-                this.operation[i] == '/' ||
-                this.operation[i] == '-' || 
-                this.operation[i] == '+' ||
-                this.operation[i] == '.'  ) {
+                if( this.operation[i] == '*' ||
+                    this.operation[i] == '/' ||
+                    this.operation[i] == '-' || 
+                    this.operation[i] == '+' ||
+                    this.operation[i] == '.'  ) {
                     this.lastOperator = this.operation[i]
                     break
                 }
 
-                if( this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
-                    this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
-                    this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9') {
+                if(this.isNumber(this.operation[i])) {
                     this.zero = false
                 }
-                else {
+                else if(this.operation[i] == '0'){
                     this.zero = true
                 }
 
@@ -111,9 +113,7 @@ class Calculator {
             else {
                 for(let i = this.operation.length - 1; i >= 0; i--) {
                     if(!this.opCheck()) {
-                        if( this.operation[i] == '1' || this.operation[i] == '2' || this.operation[i] == '3' ||
-                            this.operation[i] == '4' || this.operation[i] == '5' || this.operation[i] == '6' ||
-                            this.operation[i] == '7' || this.operation[i] == '8' || this.operation[i] == '9' || this.operation[i] == '.') {
+                        if( this.isNumber(this.operation[i]) || this.operation[i] == '.') {
                             this.zero = false
                             break
                         }
@@ -191,7 +191,9 @@ class Calculator {
     }
     
     showResult() {
+        //&& !(this.operation[this.operation.length - 1] == '0' || this.isNumber(this.operation[this.operation.length - 1]))
         if(this.opCheck()) {
+            console.log(this.operation)
             this.operation[this.operation.length - 2] = ''
         }
         
